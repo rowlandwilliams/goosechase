@@ -1,6 +1,6 @@
 import '~/styles/globals.css';
 import { type Metadata } from 'next';
-import { SidebarInset, SidebarProvider, SidebarTrigger } from '../_components/ui/sidebar';
+import { SidebarInset, SidebarProvider } from '../_components/ui/sidebar';
 import { Separator } from '../_components/ui/separator';
 import {
     Breadcrumb,
@@ -13,6 +13,8 @@ import {
 import { LogoutButton } from '../_components/LogoutButton/LogoutButton';
 import { BrainwaveIcon } from '../_components/SHARED/Icons/BrainwaveIcon/BrainwaveIcon';
 import { Button } from '../_components/ui/button';
+import Link from 'next/link';
+import { AddNewSessionButton } from '../_components/SHARED/AddNewSessionButton/AddNewSessionButton';
 
 export const metadata: Metadata = {
     title: 'Sign in',
@@ -20,15 +22,17 @@ export const metadata: Metadata = {
     icons: [{ rel: 'icon', url: '/favicon.ico' }],
 };
 
-export default async function AuthLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function AuthLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
         <SidebarProvider className="">
             <article className="flex bg-white grow">
                 <SidebarInset>
                     <header className="flex h-16 shrink-0 justify-between items-center gap-2 border-b px-4">
                         <div className="flex gap-2 items-center">
-                            <BrainwaveIcon  />
-                            <Separator orientation="vertical" className="mr-2 h-4" />
+                            <Button variant="ghost" size={'icon'} className="!p-0 ml-1">
+                                <BrainwaveIcon dim={22} />
+                            </Button>
+                            <Separator orientation="vertical" className="mr-1 h-4" />
                             <Breadcrumb>
                                 <BreadcrumbList>
                                     <BreadcrumbItem className="hidden md:block">
@@ -41,7 +45,10 @@ export default async function AuthLayout({ children }: Readonly<{ children: Reac
                                 </BreadcrumbList>
                             </Breadcrumb>
                         </div>
-                        <LogoutButton />
+                        <div className="flex gap-2 items-center">
+                            <AddNewSessionButton />
+                            <LogoutButton />
+                        </div>
                     </header>
                     <section className="p-6">{children}</section>
                 </SidebarInset>

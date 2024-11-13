@@ -9,7 +9,7 @@ export const LogoutButton = () => {
         await signOut();
     };
     return (
-        <Button variant={'outline'} onClick={handleSignOut}>
+        <Button size={'icon'} variant={'outline'} onClick={handleSignOut}>
             <LogOutIcon />
         </Button>
     );

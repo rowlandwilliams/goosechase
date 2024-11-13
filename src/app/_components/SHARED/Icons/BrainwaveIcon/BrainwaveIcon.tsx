@@ -4,7 +4,14 @@ interface Props {
 
 export const BrainwaveIcon = ({ dim = 24 }: Props) => {
     return (
-        <svg width={dim} height={dim} viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+            width={dim}
+            height={dim}
+            viewBox="0 0 40 40"
+            fill="none"
+            style={{ width: dim, height: dim }}
+            xmlns="http://www.w3.org/2000/svg"
+        >
             <path
                 d="M24.87 4.46a1.26 1.26 0 0 0-1.8.2l-4.6 5.82L3.42 29.45c.27.22.54.45.78.7a9.42 9.42 0 0 1 1.13 1.32l.1.13a9.15 9.15 0 0 1 .8 1.43c.29.62.5 1.28.65 1.95a2.5 2.5 0 0 0 2.45 1.93H38.7a1.27 1.27 0 0 0 1.27-1.3 42.43 42.43 0 0 0-15.1-31.15z"
                 fill="#9A66FF"
