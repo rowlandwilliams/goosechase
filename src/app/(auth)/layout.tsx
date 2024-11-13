@@ -1,6 +1,18 @@
 import '~/styles/globals.css';
 import { type Metadata } from 'next';
+import { SidebarInset, SidebarProvider, SidebarTrigger } from '../_components/ui/sidebar';
+import { Separator } from '../_components/ui/separator';
+import {
+    Breadcrumb,
+    BreadcrumbItem,
+    BreadcrumbLink,
+    BreadcrumbList,
+    BreadcrumbPage,
+    BreadcrumbSeparator,
+} from '../_components/ui/breadcrumb';
 import { LogoutButton } from '../_components/LogoutButton/LogoutButton';
+import { BrainwaveIcon } from '../_components/SHARED/Icons/BrainwaveIcon/BrainwaveIcon';
+import { Button } from '../_components/ui/button';
 
 export const metadata: Metadata = {
     title: 'Sign in',
@@ -10,12 +22,30 @@ export const metadata: Metadata = {
 
 export default async function AuthLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
-        <>
-            <header className="px-8 py-2 bg-white shadow  flex justify-between items-center">
-                <div className="font-haas font-bold text-lg">RideLogz</div>
-                <LogoutButton />
-            </header>
-            <div className="px-8 py-4">{children}</div>
-        </>
+        <SidebarProvider className="">
+            <article className="flex bg-white grow">
+                <SidebarInset>
+                    <header className="flex h-16 shrink-0 justify-between items-center gap-2 border-b px-4">
+                        <div className="flex gap-2 items-center">
+                            <BrainwaveIcon  />
+                            <Separator orientation="vertical" className="mr-2 h-4" />
+                            <Breadcrumb>
+                                <BreadcrumbList>
+                                    <BreadcrumbItem className="hidden md:block">
+                                        <BreadcrumbLink href="#">New Surf Session</BreadcrumbLink>
+                                    </BreadcrumbItem>
+                                    <BreadcrumbSeparator className="hidden md:block" />
+                                    <BreadcrumbItem>
+                                        <BreadcrumbPage>Fraserburgh, 13th October 2024</BreadcrumbPage>
+                                    </BreadcrumbItem>
+                                </BreadcrumbList>
+                            </Breadcrumb>
+                        </div>
+                        <LogoutButton />
+                    </header>
+                    <section className="p-6">{children}</section>
+                </SidebarInset>
+            </article>
+        </SidebarProvider>
     );
 }

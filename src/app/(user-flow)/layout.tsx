@@ -2,7 +2,8 @@ import '~/styles/globals.css';
 
 import { type Metadata } from 'next';
 
-import { Button } from '../_components/ui/Button';
+import { Button } from '../_components/ui/button';
+import { BrainwaveIcon } from '../_components/SHARED/Icons/BrainwaveIcon/BrainwaveIcon';
 
 export const metadata: Metadata = {
     title: 'Sign in',
@@ -14,14 +15,14 @@ export default async function UserFlowLayout({ children }: Readonly<{ children: 
     return (
         <>
             <nav className="flex items-center mx-44 my-12 justify-between">
-                <h1 className="font-medium bg-gradient-to-t px-4 rounded-full py-1 from-blue-500 to-zinc-800  flex items-center gap-2">
-                    Surf trackz
+                <h1 className=" bg-gradient-to-t px-4 rounded-full text-2xl font-medium  font-funnel tracking-wide items-center flex gap-2">
+                    <BrainwaveIcon />
+                    SwellMind
                 </h1>
                 <div>
-                    <Button>Sign Up</Button>
+                    <Button className="bg-indigo-600">Sign Up</Button>
                 </div>
             </nav>
-
             <div className="flex items-center justify-center grow">{children}</div>
         </>
     );

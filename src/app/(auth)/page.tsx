@@ -1,3 +1,5 @@
-export default async function Home() {
-    return <div>suhu</div>;
+import { SurfSessionGrid } from '../_components/SurfSessionGrid/SurfSessionGrid';
+
+export default function Home() {
+    return <SurfSessionGrid />;
 }
