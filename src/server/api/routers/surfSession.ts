@@ -4,6 +4,14 @@ import { createTRPCRouter, protectedProcedure } from '~/server/api/trpc';
 import { createSurfSessionScreenshot, getSessionScreenshotUrls, handleError } from './utils/utils';
 
 export const surfSessionRouter = createTRPCRouter({
+    surfSession: protectedProcedure.input(z.object({ id: z.string() })).query(async ({ input, ctx }) => {
+        const { id } = input;
+
+        const session = await ctx.db.surfSession.findUnique({ where: { id, createdById: ctx.session.user.id } });
+
+        return session;
+    }),
+
     updateSurfSession: protectedProcedure
         .input(z.object({ id: z.string(), name: z.string().nullable() }))
         .mutation(async ({ input, ctx }) => {

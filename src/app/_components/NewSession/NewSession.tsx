@@ -13,6 +13,8 @@ export const NewSession = () => {
     const sessionId = searchParams.get('id');
     const [sessionName, setSessionName] = useState('');
 
+    const surfSession = api.surfSession.surfSession.useQuery({ id: sessionId ?? '' }, { enabled: !!sessionId });
+
     const updateSessionMutation = api.surfSession.updateSurfSession.useMutation({});
 
     const handlePublish = () => {
@@ -30,6 +32,8 @@ export const NewSession = () => {
             );
         }
     };
+
+    console.log(surfSession.data);
 
     return (
         <section className="px-4">
