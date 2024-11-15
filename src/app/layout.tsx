@@ -11,7 +11,11 @@ export const metadata: Metadata = {
     icons: [{ rel: 'icon', url: '/favicon.ico' }],
 };
 
-const funnelDisplay = Funnel_Display({ subsets: ['latin'], variable: '--font-funnelDisplay' });
+const funnelDisplay = Funnel_Display({
+    subsets: ['latin'],
+    variable: '--font-funnelDisplay',
+    fallback: ['sans', 'sans-serif'],
+});
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (

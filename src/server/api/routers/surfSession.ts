@@ -41,6 +41,48 @@ async function generateSignedUrl(bucketName: string, objectKey: string, expiresI
 }
 
 export const surfSessionRouter = createTRPCRouter({
+    updateSurfSession: protectedProcedure
+        .input(z.object({ id: z.string(), name: z.string().nullable() }))
+        .mutation(async ({ input, ctx }) => {
+            const { id, name } = input;
+
+            try {
+                // Update the surf session in the database
+                const updatedSession = await ctx.db.surfSession.update({
+                    where: { id },
+                    data: {
+                        name: name ?? `Untitled - ${new Date().toDateString()}`,
+                    },
+                });
+
+                console.log('Updated session:', updatedSession);
+                return updatedSession;
+            } catch (error) {
+                console.error('Error updating session:', error);
+                throw new Error('Unable to update surf session');
+            }
+        }),
+
+    createSurfSession: protectedProcedure
+        .input(z.object({ id: z.string(), name: z.string().nullable() }))
+        .mutation(async ({ input, ctx }) => {
+            const userId = ctx.session.user.id;
+
+            console.log('sesion id', input.id);
+            // Save the session to the database
+            const newSession = await ctx.db.surfSession.create({
+                data: {
+                    id: input.id,
+                    name: input.name ?? `Untitled - ${new Date().toDateString()}`, // Fallback to 'Untitled' if no name is provided
+                    location: 'suhuhu',
+                    isDraft: true, // Assuming 'isDraft' defaults to true for now
+                    createdById: userId, // Associate the session with the user
+                },
+            });
+
+            console.log('Created session:', newSession);
+            return newSession;
+        }),
     allScreenshots: protectedProcedure.query(async () => {
         try {
             const params = {

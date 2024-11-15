@@ -1,24 +1,35 @@
 'use client';
 
-import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import { Button } from '../../ui/button';
+import { api } from '~/trpc/react';
 
 export const AddNewSessionButton = () => {
-    const [sessionId, setSessionId] = useState<string | null>(null);
+    const pathname = usePathname();
+    const router = useRouter();
+    const mutation = api.surfSession.createSurfSession.useMutation();
 
-    useEffect(() => {
-        // Generate UUID only after the component has mounted on the client
-        setSessionId(crypto.randomUUID());
-    }, []);
+    const handleCreateSession = () => {
+        const newSessionId = crypto.randomUUID();
+
+        mutation.mutate(
+            { id: newSessionId, name: 'tooooo' },
+            {
+                onSuccess: () => {
+                    router.push(`/add-new?id=${newSessionId}`);
+                },
+                onError: (error) => {
+                    console.error('Error creating session:', error);
+                },
+            }
+        );
+    };
 
     return (
-        sessionId && (
-            <Link href={{ pathname: '/add-new', query: { id: sessionId } }}>
-                <Button>
-                    <span className="text-lg">+</span> Add Surf
-                </Button>
-            </Link>
+        !pathname.includes('add-new') && (
+            <Button size="icon" onClick={handleCreateSession}>
+                <span className="text-xl">+</span>
+            </Button>
         )
     );
 };

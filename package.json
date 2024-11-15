@@ -6,6 +6,7 @@
     "scripts": {
         "build": "next build",
         "check": "next lint && tsc --noEmit",
+        "db:start": "pg_ctl -D /usr/local/var/postgres start",
         "db:generate": "prisma migrate dev",
         "db:migrate": "prisma migrate deploy",
         "db:push": "prisma db push",
@@ -64,6 +65,9 @@
         "@typescript-eslint/parser": "^8.1.0",
         "eslint": "^8.57.0",
         "eslint-config-next": "^15.0.1",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-prettier": "^5.2.1",
+        "eslint-plugin-unused-imports": "^4.1.4",
         "postcss": "^8.4.39",
         "prettier": "^3.3.2",
         "prettier-plugin-tailwindcss": "^0.6.5",
