@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter } from 'next/navigation';
 import { Button } from '../../ui/button';
-import { api } from '~/trpc/react';
+import { api } from '@/trpc/react';
 
 export const AddNewSessionButton = () => {
     const pathname = usePathname();

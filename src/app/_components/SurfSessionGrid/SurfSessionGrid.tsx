@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import { api } from '~/trpc/server';
+import { api } from '@/trpc/server';
 
 export const SurfSessionGrid = async () => {
     const surfSession = await api.surfSession.getSurfSessions();

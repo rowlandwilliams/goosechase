@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import puppeteer from 'puppeteer';
-import { createTRPCRouter, protectedProcedure } from '~/server/api/trpc';
+import { createTRPCRouter, protectedProcedure } from '@/server/api/trpc';
 import { createSurfSessionScreenshot, getSessionScreenshotUrls, handleError } from './utils/utils';
 
 export const surfSessionRouter = createTRPCRouter({

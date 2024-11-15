@@ -1,39 +1,53 @@
 'use client';
 
-import { CircleCheck, GitPullRequestDraft, RefreshCcw } from 'lucide-react';
+import { CircleCheck, GitPullRequestDraft, RefreshCcw, Save, Trash2 } from 'lucide-react';
 import { NewSessionForm } from './NewSessionForm/NewSessionForm';
 import { Separator } from '../ui/separator';
 import { Button } from '../ui/button';
 import { useSearchParams } from 'next/navigation';
-import { api } from '~/trpc/react';
-import { useState } from 'react';
+import { api } from '@/trpc/react';
+import { useCallback, useEffect } from 'react';
+import { useNewSurfSessionStore } from '@/store/newSurfSession';
 
 export const NewSession = () => {
     const searchParams = useSearchParams();
     const sessionId = searchParams.get('id');
-    const [sessionName, setSessionName] = useState('');
+    const { sessionName, setSessionName } = useNewSurfSessionStore();
 
-    const surfSession = api.surfSession.surfSession.useQuery({ id: sessionId ?? '' }, { enabled: !!sessionId });
+    const surfSessionQuery = api.surfSession.surfSession.useQuery({ id: sessionId ?? '' }, { enabled: !!sessionId });
+    const updateSessionMutation = api.surfSession.updateSurfSession.useMutation({
+        onSuccess: () => {
+            void surfSessionQuery.refetch(); // Refetch data after successful mutation
+        },
+    });
 
-    const updateSessionMutation = api.surfSession.updateSurfSession.useMutation({});
-
-    const handlePublish = () => {
+    const handlePublish = useCallback(() => {
         if (sessionId) {
-            updateSessionMutation.mutate(
-                { id: sessionId, name: sessionName }
-                // {
-                //     onSuccess: () => {
-                //         router.push(`/add-new?id=${newSessionId}`);
-                //     },
-                //     onError: (error) => {
-                //         console.error('Error creating session:', error);
-                //     },
-                // }
-            );
+            updateSessionMutation.mutate({ id: sessionId, name: sessionName });
         }
-    };
+    }, [sessionId, sessionName, updateSessionMutation]);
+    const changesMade = sessionName !== surfSessionQuery.data?.name;
 
-    console.log(surfSession.data);
+    // Update the sessionName state when the query loads the session data
+    useEffect(() => {
+        if (surfSessionQuery.data?.name) {
+            setSessionName(surfSessionQuery.data.name);
+        }
+    }, [surfSessionQuery.data?.name, setSessionName]);
+
+    useEffect(() => {
+        if (sessionId && changesMade) {
+            const autosaveTimeout = setTimeout(() => {
+                handlePublish();
+            }, 2000); // Autosave after 2 seconds of inactivity
+
+            return () => clearTimeout(autosaveTimeout); // Cleanup on sessionName change
+        }
+    }, [sessionName, sessionId, surfSessionQuery.data?.name, handlePublish, changesMade]);
+
+    const handleSessionNameChange = ({ newName }: { newName: string }) => {
+        setSessionName(newName);
+    };
 
     return (
         <section className="px-4">
@@ -59,12 +73,17 @@ export const NewSession = () => {
                         )}
                     </div>
                     <Separator orientation="vertical" className="h-4 mx-2" />
-                    <Button onClick={handlePublish} className="h-8">
-                        Publish
+                    <Button onClick={handlePublish} className="h-8" disabled={!changesMade}>
+                        <Save />
+                        Save
+                    </Button>
+                    <Button onClick={handlePublish} variant={'destructive'} className="h-8">
+                        <Trash2 />
+                        Delete
                     </Button>
                 </section>
             </header>
-            <NewSessionForm setSessionName={setSessionName} />
+            <NewSessionForm sessionName={sessionName} handleSessionNameChange={handleSessionNameChange} />
         </section>
     );
 };

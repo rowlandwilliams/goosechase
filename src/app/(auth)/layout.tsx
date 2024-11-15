@@ -1,19 +1,8 @@
-import '~/styles/globals.css';
+import '@/styles/globals.css';
 import { type Metadata } from 'next';
-import { Separator } from '../_components/ui/separator';
-import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
-    BreadcrumbPage,
-    BreadcrumbSeparator,
-} from '../_components/ui/breadcrumb';
-import { LogoutButton } from '../_components/LogoutButton/LogoutButton';
-import { BrainwaveIcon } from '../_components/SHARED/Icons/BrainwaveIcon/BrainwaveIcon';
-import { Button } from '../_components/ui/button';
-import { AddNewSessionButton } from '../_components/SHARED/AddNewSessionButton/AddNewSessionButton';
+
 import { SessionProvider } from 'next-auth/react';
+import { AuthLayoutNavbar } from '@/app/_components/AuthLayoutNavbar/AuthLayoutNavbar';
 
 export const metadata: Metadata = {
     title: 'Sign in',
@@ -24,29 +13,7 @@ export const metadata: Metadata = {
 export default function AuthLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
         <SessionProvider>
-            <header className="flex h-16 shrink-0 justify-between shadow-sm bg-white items-center gap-2 border-b px-4">
-                <div className="flex gap-2 items-center">
-                    <Button variant="ghost" size={'icon'} className="!p-0 ml-1">
-                        <BrainwaveIcon dim={22} />
-                    </Button>
-                    <Separator orientation="vertical" className="mr-1 h-4" />
-                    <Breadcrumb>
-                        <BreadcrumbList>
-                            <BreadcrumbItem className="hidden md:block">
-                                <BreadcrumbLink href="#">New Surf Session</BreadcrumbLink>
-                            </BreadcrumbItem>
-                            <BreadcrumbSeparator className="hidden md:block" />
-                            <BreadcrumbItem>
-                                <BreadcrumbPage>Fraserburgh, 13th October 2024</BreadcrumbPage>
-                            </BreadcrumbItem>
-                        </BreadcrumbList>
-                    </Breadcrumb>
-                </div>
-                <div className="flex gap-2 items-center">
-                    <AddNewSessionButton />
-                    <LogoutButton />
-                </div>
-            </header>
+            <AuthLayoutNavbar />
             <section className="p-6">{children}</section>
         </SessionProvider>
     );

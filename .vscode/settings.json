@@ -11,5 +11,6 @@
         "source.fixAll.eslint": "always"
     },
     "typescript.tsserver.experimental.enableProjectDiagnostics": true,
-    "editor.suggest.snippetsPreventQuickSuggestions": false
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "typescript.preferences.importModuleSpecifier": "non-relative"
 }
