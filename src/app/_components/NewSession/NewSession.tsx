@@ -60,7 +60,7 @@ export const NewSession = () => {
                     </Button>
                 </section>
             </header>
-            <NewSessionForm sessionName={sessionName} setSessionName={setSessionName} />
+            <NewSessionForm setSessionName={setSessionName} />
         </section>
     );
 };
