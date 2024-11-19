@@ -2,7 +2,6 @@ import '@/styles/globals.css';
 
 import { type Metadata } from 'next';
 
-import { Button } from '../_components/ui/button';
 import { BrainwaveIcon } from '../_components/SHARED/Icons/BrainwaveIcon/BrainwaveIcon';
 
 export const metadata: Metadata = {
@@ -14,14 +13,11 @@ export const metadata: Metadata = {
 export default async function UserFlowLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
         <>
-            <nav className="flex items-center mx-44 my-12 justify-between">
+            <nav className="flex items-center justify-center mx-44 my-12">
                 <h1 className=" bg-gradient-to-t px-4 rounded-full text-2xl font-medium  font-funnel tracking-wide items-center flex gap-2">
                     <BrainwaveIcon />
                     gooosechase
                 </h1>
-                <div>
-                    <Button className="bg-indigo-600">Sign Up</Button>
-                </div>
             </nav>
             <div className="flex items-center justify-center grow mx-4 md:mx-0">{children}</div>
         </>

@@ -104,7 +104,10 @@ export const surfSessionRouter = createTRPCRouter({
     }),
 
     getSurfSessions: protectedProcedure.query(async ({ ctx }) => {
-        const surfSessions = await ctx.db.surfSession.findMany({ where: { createdById: ctx.session.user.id } });
+        const surfSessions = await ctx.db.surfSession.findMany({
+            where: { createdById: ctx.session.user.id },
+            orderBy: { createdAt: 'desc' },
+        });
 
         return surfSessions;
     }),
