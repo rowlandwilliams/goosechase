@@ -1,18 +1,20 @@
 'use client';
 
-import { CircleCheck, GitPullRequestDraft, RefreshCcw, Save, Trash2 } from 'lucide-react';
+import { CircleCheck, RefreshCcw, Save, Trash2 } from 'lucide-react';
 import { NewSessionForm } from './NewSessionForm/NewSessionForm';
 import { Separator } from '../ui/separator';
 import { Button } from '../ui/button';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { api } from '@/trpc/react';
 import { useCallback, useEffect } from 'react';
 import { useNewSurfSessionStore } from '@/store/newSurfSession';
+import { DraftTag } from '@/app/_components/SHARED/DraftTag/DraftTag';
 
 export const NewSession = () => {
     const searchParams = useSearchParams();
     const sessionId = searchParams.get('id');
     const { sessionName, setSessionName } = useNewSurfSessionStore();
+    const router = useRouter();
 
     const surfSessionQuery = api.surfSession.surfSession.useQuery({ id: sessionId ?? '' }, { enabled: !!sessionId });
     const updateSessionMutation = api.surfSession.updateSurfSession.useMutation({
@@ -20,6 +22,7 @@ export const NewSession = () => {
             void surfSessionQuery.refetch(); // Refetch data after successful mutation
         },
     });
+    const deleteSessionMutation = api.surfSession.deleteSurfSession.useMutation();
 
     const handlePublish = useCallback(() => {
         if (sessionId) {
@@ -27,6 +30,21 @@ export const NewSession = () => {
         }
     }, [sessionId, sessionName, updateSessionMutation]);
     const changesMade = sessionName !== surfSessionQuery.data?.name;
+
+    const handleDelete = () => {
+        if (sessionId) {
+            deleteSessionMutation.mutate(
+                {
+                    id: sessionId,
+                },
+                {
+                    onSuccess: () => {
+                        router.push('/');
+                    },
+                }
+            );
+        }
+    };
 
     // Update the sessionName state when the query loads the session data
     useEffect(() => {
@@ -54,10 +72,7 @@ export const NewSession = () => {
             <header className="flex justify-between items-center border-b border-dashed pb-4">
                 <h1 className="text-base font-medium">Input Surf Session below</h1>
                 <section className="flex gap-2 items-center">
-                    <div className="text-xs flex gap-1.5 items-center bg-red-100 px-4 rounded-full py-1 text-red-600 font-medium">
-                        <GitPullRequestDraft className="h-3 w-3" />
-                        Draft
-                    </div>
+                    <DraftTag />
                     <Separator orientation="vertical" className="h-4 mx-2" />
                     <div className="text-stone-600 flex gap-1 items-center w-[162px]">
                         {updateSessionMutation.isPending ? (
@@ -77,9 +92,9 @@ export const NewSession = () => {
                         <Save />
                         Save
                     </Button>
-                    <Button onClick={handlePublish} variant={'destructive'} className="h-8">
+                    <Button onClick={handleDelete} variant={'destructive'} className="h-8">
                         <Trash2 />
-                        Delete
+                        Discard
                     </Button>
                 </section>
             </header>

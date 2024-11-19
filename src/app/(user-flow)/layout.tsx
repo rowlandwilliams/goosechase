@@ -17,13 +17,13 @@ export default async function UserFlowLayout({ children }: Readonly<{ children: 
             <nav className="flex items-center mx-44 my-12 justify-between">
                 <h1 className=" bg-gradient-to-t px-4 rounded-full text-2xl font-medium  font-funnel tracking-wide items-center flex gap-2">
                     <BrainwaveIcon />
-                    SwellMind
+                    gooosechase
                 </h1>
                 <div>
                     <Button className="bg-indigo-600">Sign Up</Button>
                 </div>
             </nav>
-            <div className="flex items-center justify-center grow">{children}</div>
+            <div className="flex items-center justify-center grow mx-4 md:mx-0">{children}</div>
         </>
     );
 }
