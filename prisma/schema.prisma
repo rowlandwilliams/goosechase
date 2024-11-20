@@ -31,6 +31,7 @@ model SurfSession {
     name        String?
     isDraft     Boolean
     location    String?
+    comments    String?
     createdAt   DateTime @default(now())
     updatedAt   DateTime @updatedAt
 

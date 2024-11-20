@@ -13,7 +13,7 @@ export const AddNewSessionButton = () => {
         const newSessionId = crypto.randomUUID();
 
         mutation.mutate(
-            { id: newSessionId, name: 'tooooo' },
+            { id: newSessionId, name: null },
             {
                 onSuccess: () => {
                     router.push(`/add-new?id=${newSessionId}`);

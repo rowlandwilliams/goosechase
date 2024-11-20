@@ -13,7 +13,7 @@ import { DraftTag } from '@/app/_components/SHARED/DraftTag/DraftTag';
 export const NewSession = () => {
     const searchParams = useSearchParams();
     const sessionId = searchParams.get('id');
-    const { sessionName, setSessionName } = useNewSurfSessionStore();
+    const { sessionName, setSessionName, comments, setComments } = useNewSurfSessionStore();
     const router = useRouter();
 
     const surfSessionQuery = api.surfSession.surfSession.useQuery({ id: sessionId ?? '' }, { enabled: !!sessionId });
@@ -26,10 +26,11 @@ export const NewSession = () => {
 
     const handlePublish = useCallback(() => {
         if (sessionId) {
-            updateSessionMutation.mutate({ id: sessionId, name: sessionName });
+            updateSessionMutation.mutate({ id: sessionId, name: sessionName, comments });
         }
-    }, [sessionId, sessionName, updateSessionMutation]);
-    const changesMade = sessionName !== surfSessionQuery.data?.name;
+    }, [sessionId, sessionName, updateSessionMutation, comments]);
+
+    const changesMade = sessionName !== surfSessionQuery.data?.name || comments !== surfSessionQuery.data.comments;
 
     const handleDelete = () => {
         if (sessionId) {
@@ -51,7 +52,10 @@ export const NewSession = () => {
         if (surfSessionQuery.data?.name) {
             setSessionName(surfSessionQuery.data.name);
         }
-    }, [surfSessionQuery.data?.name, setSessionName]);
+        if (surfSessionQuery.data?.comments) {
+            setComments(surfSessionQuery.data.comments);
+        }
+    }, [surfSessionQuery.data, setSessionName, setComments]);
 
     useEffect(() => {
         if (sessionId && changesMade) {
@@ -98,7 +102,9 @@ export const NewSession = () => {
                     </Button>
                 </section>
             </header>
-            <NewSessionForm sessionName={sessionName} handleSessionNameChange={handleSessionNameChange} />
+            <div className="flex gap-12 py-8 px-2">
+                <NewSessionForm sessionName={sessionName} handleSessionNameChange={handleSessionNameChange} />
+            </div>
         </section>
     );
 };
