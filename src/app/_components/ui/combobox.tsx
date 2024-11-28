@@ -16,7 +16,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/app/_components/ui/po
 import { useState } from 'react';
 
 interface Props {
-    options: { value: string; label: string }[];
+    options: { value: string; label: string; subLabel?: string }[];
     selectOptionString: string;
     noResultsMessage: string;
     searchPlaceholder: string;
@@ -53,24 +53,32 @@ export const Combobox = ({
                     <CommandList>
                         <CommandEmpty>{noResultsMessage}.</CommandEmpty>
                         <CommandGroup>
-                            {options.map((option) => (
-                                <CommandItem
-                                    key={option.value}
-                                    value={option.value}
-                                    onSelect={(currentValue) => {
-                                        handleSelect(currentValue === value ? '' : currentValue);
-                                        setOpen(false);
-                                    }}
-                                >
-                                    <Check
-                                        className={cn(
-                                            'mr-2 h-4 w-4',
-                                            value === option.value ? 'opacity-100' : 'opacity-0'
+                            {options
+                                .sort((a, b) => a.label.localeCompare(b.label))
+                                .map((option) => (
+                                    <CommandItem
+                                        key={option.value}
+                                        value={option.value}
+                                        onSelect={(currentValue) => {
+                                            handleSelect(currentValue === value ? '' : currentValue);
+                                            setOpen(false);
+                                        }}
+                                        className="flex-col items-start"
+                                    >
+                                        <div className="flex items-center gap-2">
+                                            <Check
+                                                className={cn(
+                                                    'mr-2 h-4 w-4',
+                                                    value === option.value ? 'opacity-100' : 'opacity-0'
+                                                )}
+                                            />
+                                            <div>{option.label}</div>
+                                        </div>
+                                        {option.subLabel && (
+                                            <div className="text-stone-500 ml-8">{option.subLabel}</div>
                                         )}
-                                    />
-                                    {option.label}
-                                </CommandItem>
-                            ))}
+                                    </CommandItem>
+                                ))}
                         </CommandGroup>
                     </CommandList>
                 </Command>

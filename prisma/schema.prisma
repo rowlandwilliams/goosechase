@@ -26,20 +26,35 @@ model User {
     surfSessions SurfSession[]
 }
 
+
 model SurfSession {
     id          String       @id @default(uuid())
     name        String?
     isDraft     Boolean
-    location    String?
     comments    String?
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
+    createdAt   DateTime     @default(now())
+    updatedAt   DateTime     @updatedAt
 
     // Foreign key to User model
     createdById String
     createdBy   User    @relation(fields: [createdById], references: [id]) // Linking to User
 
+    // Foreign key to Location model
+    locationId  String?
+    location    Location? @relation(fields: [locationId], references: [id])
+
     @@index([createdById]) // Optional index for querying by user
 }
 
 
+model Location {
+    id                String     @id @default(uuid()) // Using UUID for unique location ID
+    name              String
+    surfForecastUrlString String    
+    breakType         String?
+    latitude          Float
+    longitude         Float
+
+    // Relation with SurfSession
+    surfSessions      SurfSession[]
+}

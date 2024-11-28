@@ -1,6 +1,7 @@
 import { createCallerFactory, createTRPCRouter } from '@/server/api/trpc';
 import { surfSessionRouter } from './routers/surfSession';
 import { userFlowRouter } from '@/server/api/routers/userFlow';
+import { locationRouter } from '@/server/api/routers/location';
 
 /**
  * This is the primary router for your server.
@@ -10,6 +11,7 @@ import { userFlowRouter } from '@/server/api/routers/userFlow';
 export const appRouter = createTRPCRouter({
     surfSession: surfSessionRouter,
     userFlow: userFlowRouter,
+    location: locationRouter,
 });
 
 // export type definition of API

@@ -9,6 +9,7 @@ import { Camera } from 'lucide-react';
 import { api } from '@/trpc/react';
 import { Textarea } from '@/app/_components/ui/textarea';
 import { useNewSurfSessionStore } from '@/store/newSurfSession';
+import { Rating } from '@/app/_components/ui/rating';
 
 interface Props {
     sessionName: string;
@@ -16,6 +17,7 @@ interface Props {
 }
 
 export const NewSessionForm = ({ sessionName, handleSessionNameChange }: Props) => {
+    const locationsQuery = api.location.locations.useQuery();
     const [location, setLocation] = useState('');
     const { comments, setComments } = useNewSurfSessionStore();
 
@@ -28,7 +30,7 @@ export const NewSessionForm = ({ sessionName, handleSessionNameChange }: Props) 
     const handleCreateScreenshot = (e: FormEvent) => {
         e.preventDefault();
 
-        createScreenshotMutation.mutate({ spotName: 'fraserburgh' });
+        createScreenshotMutation.mutate({ spotName: location });
     };
 
     return (
@@ -43,11 +45,13 @@ export const NewSessionForm = ({ sessionName, handleSessionNameChange }: Props) 
             <FormFieldWithHeader title="Location">
                 <div className="flex gap-4">
                     <Combobox
-                        options={[
-                            { label: 'Fraserburgh', value: 'fraserburgh' },
-                            { label: 'Thurso East', value: 'thurso' },
-                            { label: 'East Sands', value: 'east-sands' },
-                        ]}
+                        options={
+                            locationsQuery.data?.map(({ name, surfForecastUrlString, breakType }) => ({
+                                label: name,
+                                value: surfForecastUrlString,
+                                subLabel: breakType ?? undefined,
+                            })) ?? []
+                        }
                         noResultsMessage="No locations found"
                         searchPlaceholder="Search locations"
                         selectOptionString="Select Location"
@@ -67,6 +71,9 @@ export const NewSessionForm = ({ sessionName, handleSessionNameChange }: Props) 
                     placeholder="Add any useful details about the session"
                     onChange={(e) => setComments(e.target.value)}
                 />
+            </FormFieldWithHeader>
+            <FormFieldWithHeader title="Rating">
+                <Rating rating={5} variant="indigo" showText={false} />
             </FormFieldWithHeader>
         </form>
     );

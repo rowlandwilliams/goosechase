@@ -1,0 +1,302 @@
+[
+    {
+        "label": "Aberdeen",
+        "value": "Aberdeen",
+        "lat": 57.1715,
+        "lng": -2.0744,
+        "type": "Beach/groyne/river",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s3-1fe2a002962d0ab4ccc72dfbe6359e4e.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    },
+    {
+        "label": "Balmedie",
+        "value": "Balmedie",
+        "lat": 57.2894,
+        "lng": -2.0024,
+        "type": "Beach",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s2-3055f66da0c53f2e0fb68196b648acca.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    },
+    {
+        "label": "Banff",
+        "value": "Banff",
+        "lat": 57.6813,
+        "lng": -2.5235,
+        "type": "Beach and point",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s4-212c8f80a0ef3ad8a72006033804f79a.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": true
+    },
+    {
+        "label": "Boyndie Bay",
+        "value": "Boyndie-Bay",
+        "lat": 57.6771,
+        "lng": -2.5649,
+        "type": "Beach and reef",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s4-212c8f80a0ef3ad8a72006033804f79a.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    },
+    {
+        "label": "Cambo Sands",
+        "value": "Cambo-Sands",
+        "lat": 56.2974,
+        "lng": -2.6352,
+        "type": "Beach and reef",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s2-3055f66da0c53f2e0fb68196b648acca.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    },
+    {
+        "label": "Cruden Bay",
+        "value": "Cruden-Bay",
+        "lat": 57.4092,
+        "lng": -1.8552,
+        "type": "Sandbar",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s2-3055f66da0c53f2e0fb68196b648acca.svg",
+        "icon": "/packs/media/static/icons/icon-sandbar-17fd75c1272bbe1fdba0187793a83503.svg",
+        "hidden": false
+    },
+    {
+        "label": "Cullen",
+        "value": "Cullen",
+        "lat": 57.6972,
+        "lng": -2.8241,
+        "type": "Beach",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s3-1fe2a002962d0ab4ccc72dfbe6359e4e.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    },
+    {
+        "label": "Fraserburgh",
+        "value": "Fraserburgh",
+        "lat": 57.6806,
+        "lng": -1.9876,
+        "type": "Beach and point",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s4-212c8f80a0ef3ad8a72006033804f79a.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    },
+    {
+        "label": "Lossiemouth",
+        "value": "Lossiemouth",
+        "lat": 57.7133,
+        "lng": -3.2603,
+        "type": "Beach",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s2-3055f66da0c53f2e0fb68196b648acca.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    },
+    {
+        "label": "Lunan Bay",
+        "value": "Lunan-Bay",
+        "lat": 56.6546,
+        "lng": -2.5036,
+        "type": "Beach and point",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s2-3055f66da0c53f2e0fb68196b648acca.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    },
+    {
+        "label": "Montrose",
+        "value": "Montrose",
+        "lat": 56.7229,
+        "lng": -2.4289,
+        "type": "Beach and reef",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s2-3055f66da0c53f2e0fb68196b648acca.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": true
+    },
+    {
+        "label": "Newburgh",
+        "value": "Newburgh",
+        "lat": 57.3055,
+        "lng": -1.99,
+        "type": "Point/river",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s3-1fe2a002962d0ab4ccc72dfbe6359e4e.svg",
+        "icon": "/packs/media/static/icons/icon-point-e1a73fdf4f1e3f09d893a8dc8e5491cd.svg",
+        "hidden": false
+    },
+    {
+        "label": "Nigg Bay",
+        "value": "Nigg-Bay",
+        "lat": 57.1312,
+        "lng": -2.0321,
+        "type": "Reef",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s4-212c8f80a0ef3ad8a72006033804f79a.svg",
+        "icon": "/packs/media/static/icons/icon-reef-122e9100115d0bf9bfc0534e1ec4b6c1.svg",
+        "hidden": true
+    },
+    {
+        "label": "Phingask",
+        "value": "Phingask",
+        "lat": 57.7074,
+        "lng": -2.0162,
+        "type": "Reef",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s4-212c8f80a0ef3ad8a72006033804f79a.svg",
+        "icon": "/packs/media/static/icons/icon-reef-122e9100115d0bf9bfc0534e1ec4b6c1.svg",
+        "hidden": true
+    },
+    {
+        "label": "Sandend Bay",
+        "value": "Sandend-Bay",
+        "lat": 57.6856,
+        "lng": -2.7385,
+        "type": "Beach and point",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s4-212c8f80a0ef3ad8a72006033804f79a.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    },
+    {
+        "label": "Sandford Bay",
+        "value": "Sandford-Bay",
+        "lat": 57.484,
+        "lng": -1.7898,
+        "type": "Beach and reef",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s2-3055f66da0c53f2e0fb68196b648acca.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    },
+    {
+        "label": "Sandhaven",
+        "value": "Sandhaven",
+        "lat": 57.7064,
+        "lng": -2.0556,
+        "type": "Reef",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s4-212c8f80a0ef3ad8a72006033804f79a.svg",
+        "icon": "/packs/media/static/icons/icon-reef-122e9100115d0bf9bfc0534e1ec4b6c1.svg",
+        "hidden": true
+    },
+    {
+        "label": "St Andrews",
+        "value": "St-Andrews",
+        "lat": 56.3421,
+        "lng": -2.7887,
+        "type": "Beach",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s2-3055f66da0c53f2e0fb68196b648acca.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    },
+    {
+        "label": "St Combs",
+        "value": "St-Combs",
+        "lat": 57.6613,
+        "lng": -1.9074,
+        "type": "Beach and reef",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s2-3055f66da0c53f2e0fb68196b648acca.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    },
+    {
+        "label": "Stonehaven",
+        "value": "Stonehaven",
+        "lat": 56.9664,
+        "lng": -2.2039,
+        "type": "Beach and reef",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s4-212c8f80a0ef3ad8a72006033804f79a.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    },
+    {
+        "label": "Spey Bay",
+        "value": "Spey-Bay",
+        "lat": 57.6767,
+        "lng": -3.1,
+        "type": "Beach",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s2-3055f66da0c53f2e0fb68196b648acca.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    },
+    {
+        "label": "Sunnyside Bay",
+        "value": "Sunnyside-Bay",
+        "lat": 57.6807,
+        "lng": -2.5487,
+        "type": "Reef",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s4-212c8f80a0ef3ad8a72006033804f79a.svg",
+        "icon": "/packs/media/static/icons/icon-reef-122e9100115d0bf9bfc0534e1ec4b6c1.svg",
+        "hidden": true
+    },
+    {
+        "label": "Palmer Cove",
+        "value": "Palmer-Cove",
+        "lat": 57.6784,
+        "lng": -2.5085,
+        "type": "River",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s4-212c8f80a0ef3ad8a72006033804f79a.svg",
+        "icon": "/packs/media/static/icons/icon-river-5090d49bdb7e9e82c9da2df347c4d4f8.svg",
+        "hidden": true
+    },
+    {
+        "label": "Pennan",
+        "value": "Pennan",
+        "lat": 57.6907,
+        "lng": -2.2631,
+        "type": "Reef",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s4-212c8f80a0ef3ad8a72006033804f79a.svg",
+        "icon": "/packs/media/static/icons/icon-reef-122e9100115d0bf9bfc0534e1ec4b6c1.svg",
+        "hidden": true
+    },
+    {
+        "label": "Wisemans",
+        "value": "Wisemans",
+        "lat": 57.7086,
+        "lng": -2.0652,
+        "type": "Reef/jetty",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s4-212c8f80a0ef3ad8a72006033804f79a.svg",
+        "icon": "/packs/media/static/icons/icon-reef-122e9100115d0bf9bfc0534e1ec4b6c1.svg",
+        "hidden": true
+    },
+    {
+        "label": "West Point",
+        "value": "West-Point",
+        "lat": 57.6991,
+        "lng": -2.0073,
+        "type": "Point",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s4-212c8f80a0ef3ad8a72006033804f79a.svg",
+        "icon": "/packs/media/static/icons/icon-point-e1a73fdf4f1e3f09d893a8dc8e5491cd.svg",
+        "hidden": false
+    },
+    {
+        "label": "The Harbour",
+        "value": "The-Harbour",
+        "lat": 57.1439,
+        "lng": -2.0553,
+        "type": "Beach/groyne",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s3-1fe2a002962d0ab4ccc72dfbe6359e4e.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    },
+    {
+        "label": "Inverbervie",
+        "value": "Inverbervie",
+        "lat": 56.8433,
+        "lng": -2.2641,
+        "type": "Point",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s4-212c8f80a0ef3ad8a72006033804f79a.svg",
+        "icon": "/packs/media/static/icons/icon-point-e1a73fdf4f1e3f09d893a8dc8e5491cd.svg",
+        "hidden": false
+    },
+    {
+        "label": "Johnshaven",
+        "value": "Johnshaven",
+        "lat": 56.7835,
+        "lng": -2.3295,
+        "type": "Reef",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s4-212c8f80a0ef3ad8a72006033804f79a.svg",
+        "icon": "/packs/media/static/icons/icon-reef-122e9100115d0bf9bfc0534e1ec4b6c1.svg",
+        "hidden": true
+    },
+    {
+        "label": "Arbroath",
+        "value": "Arbroath",
+        "lat": 56.5506,
+        "lng": -2.5846,
+        "type": "Beach and point",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s2-3055f66da0c53f2e0fb68196b648acca.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    }
+]

@@ -1,9 +1,14 @@
 import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcryptjs';
+import locations from './sample-data/locations.json';
 
 const prisma = new PrismaClient();
 
 async function main() {
+    await prisma.surfSession.deleteMany({});
+    await prisma.location.deleteMany({});
+    await prisma.user.deleteMany({});
+
     // Hash the password before saving to the database
     const hashedPassword = await bcrypt.hash('password', 10);
 
@@ -16,6 +21,23 @@ async function main() {
     });
 
     console.log('User created:', user);
+
+    // Seed locations from JSON
+    const locationPromises = locations.map((location) =>
+        prisma.location.create({
+            data: {
+                name: location.name,
+                surfForecastUrlString: location.surfForecastUrlString,
+                latitude: location.latitude,
+                longitude: location.longitude,
+                breakType: location.breakType,
+            },
+        })
+    );
+
+    const seededLocations = await Promise.all(locationPromises);
+
+    console.log('Locations seeded:', seededLocations.length);
 }
 
 main()

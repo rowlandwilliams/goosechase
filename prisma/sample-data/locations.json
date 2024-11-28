@@ -1,0 +1,302 @@
+[
+    {
+        "name": "Aberdeen",
+        "surfForecastUrlString": "Aberdeen",
+        "latitude": 57.1715,
+        "longitude": -2.0744,
+        "breakType": "Beach/groyne/river",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s3-1fe2a002962d0ab4ccc72dfbe6359e4e.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    },
+    {
+        "name": "Balmedie",
+        "surfForecastUrlString": "Balmedie",
+        "latitude": 57.2894,
+        "longitude": -2.0024,
+        "breakType": "Beach",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s2-3055f66da0c53f2e0fb68196b648acca.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    },
+    {
+        "name": "Banff",
+        "surfForecastUrlString": "Banff",
+        "latitude": 57.6813,
+        "longitude": -2.5235,
+        "breakType": "Beach and point",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s4-212c8f80a0ef3ad8a72006033804f79a.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": true
+    },
+    {
+        "name": "Boyndie Bay",
+        "surfForecastUrlString": "Boyndie-Bay",
+        "latitude": 57.6771,
+        "longitude": -2.5649,
+        "breakType": "Beach and reef",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s4-212c8f80a0ef3ad8a72006033804f79a.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    },
+    {
+        "name": "Cambo Sands",
+        "surfForecastUrlString": "Cambo-Sands",
+        "latitude": 56.2974,
+        "longitude": -2.6352,
+        "breakType": "Beach and reef",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s2-3055f66da0c53f2e0fb68196b648acca.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    },
+    {
+        "name": "Cruden Bay",
+        "surfForecastUrlString": "Cruden-Bay",
+        "latitude": 57.4092,
+        "longitude": -1.8552,
+        "breakType": "Sandbar",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s2-3055f66da0c53f2e0fb68196b648acca.svg",
+        "icon": "/packs/media/static/icons/icon-sandbar-17fd75c1272bbe1fdba0187793a83503.svg",
+        "hidden": false
+    },
+    {
+        "name": "Cullen",
+        "surfForecastUrlString": "Cullen",
+        "latitude": 57.6972,
+        "longitude": -2.8241,
+        "breakType": "Beach",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s3-1fe2a002962d0ab4ccc72dfbe6359e4e.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    },
+    {
+        "name": "Fraserburgh",
+        "surfForecastUrlString": "Fraserburgh",
+        "latitude": 57.6806,
+        "longitude": -1.9876,
+        "breakType": "Beach and point",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s4-212c8f80a0ef3ad8a72006033804f79a.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    },
+    {
+        "name": "Lossiemouth",
+        "surfForecastUrlString": "Lossiemouth",
+        "latitude": 57.7133,
+        "longitude": -3.2603,
+        "breakType": "Beach",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s2-3055f66da0c53f2e0fb68196b648acca.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    },
+    {
+        "name": "Lunan Bay",
+        "surfForecastUrlString": "Lunan-Bay",
+        "latitude": 56.6546,
+        "longitude": -2.5036,
+        "breakType": "Beach and point",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s2-3055f66da0c53f2e0fb68196b648acca.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    },
+    {
+        "name": "Montrose",
+        "surfForecastUrlString": "Montrose",
+        "latitude": 56.7229,
+        "longitude": -2.4289,
+        "breakType": "Beach and reef",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s2-3055f66da0c53f2e0fb68196b648acca.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": true
+    },
+    {
+        "name": "Newburgh",
+        "surfForecastUrlString": "Newburgh",
+        "latitude": 57.3055,
+        "longitude": -1.99,
+        "breakType": "Point/river",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s3-1fe2a002962d0ab4ccc72dfbe6359e4e.svg",
+        "icon": "/packs/media/static/icons/icon-point-e1a73fdf4f1e3f09d893a8dc8e5491cd.svg",
+        "hidden": false
+    },
+    {
+        "name": "Nigg Bay",
+        "surfForecastUrlString": "Nigg-Bay",
+        "latitude": 57.1312,
+        "longitude": -2.0321,
+        "breakType": "Reef",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s4-212c8f80a0ef3ad8a72006033804f79a.svg",
+        "icon": "/packs/media/static/icons/icon-reef-122e9100115d0bf9bfc0534e1ec4b6c1.svg",
+        "hidden": true
+    },
+    {
+        "name": "Phingask",
+        "surfForecastUrlString": "Phingask",
+        "latitude": 57.7074,
+        "longitude": -2.0162,
+        "breakType": "Reef",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s4-212c8f80a0ef3ad8a72006033804f79a.svg",
+        "icon": "/packs/media/static/icons/icon-reef-122e9100115d0bf9bfc0534e1ec4b6c1.svg",
+        "hidden": true
+    },
+    {
+        "name": "Sandend Bay",
+        "surfForecastUrlString": "Sandend-Bay",
+        "latitude": 57.6856,
+        "longitude": -2.7385,
+        "breakType": "Beach and point",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s4-212c8f80a0ef3ad8a72006033804f79a.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    },
+    {
+        "name": "Sandford Bay",
+        "surfForecastUrlString": "Sandford-Bay",
+        "latitude": 57.484,
+        "longitude": -1.7898,
+        "breakType": "Beach and reef",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s2-3055f66da0c53f2e0fb68196b648acca.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    },
+    {
+        "name": "Sandhaven",
+        "surfForecastUrlString": "Sandhaven",
+        "latitude": 57.7064,
+        "longitude": -2.0556,
+        "breakType": "Reef",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s4-212c8f80a0ef3ad8a72006033804f79a.svg",
+        "icon": "/packs/media/static/icons/icon-reef-122e9100115d0bf9bfc0534e1ec4b6c1.svg",
+        "hidden": true
+    },
+    {
+        "name": "St Andrews",
+        "surfForecastUrlString": "St-Andrews",
+        "latitude": 56.3421,
+        "longitude": -2.7887,
+        "breakType": "Beach",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s2-3055f66da0c53f2e0fb68196b648acca.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    },
+    {
+        "name": "St Combs",
+        "surfForecastUrlString": "St-Combs",
+        "latitude": 57.6613,
+        "longitude": -1.9074,
+        "breakType": "Beach and reef",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s2-3055f66da0c53f2e0fb68196b648acca.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    },
+    {
+        "name": "Stonehaven",
+        "surfForecastUrlString": "Stonehaven",
+        "latitude": 56.9664,
+        "longitude": -2.2039,
+        "breakType": "Beach and reef",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s4-212c8f80a0ef3ad8a72006033804f79a.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    },
+    {
+        "name": "Spey Bay",
+        "surfForecastUrlString": "Spey-Bay",
+        "latitude": 57.6767,
+        "longitude": -3.1,
+        "breakType": "Beach",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s2-3055f66da0c53f2e0fb68196b648acca.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    },
+    {
+        "name": "Sunnyside Bay",
+        "surfForecastUrlString": "Sunnyside-Bay",
+        "latitude": 57.6807,
+        "longitude": -2.5487,
+        "breakType": "Reef",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s4-212c8f80a0ef3ad8a72006033804f79a.svg",
+        "icon": "/packs/media/static/icons/icon-reef-122e9100115d0bf9bfc0534e1ec4b6c1.svg",
+        "hidden": true
+    },
+    {
+        "name": "Palmer Cove",
+        "surfForecastUrlString": "Palmer-Cove",
+        "latitude": 57.6784,
+        "longitude": -2.5085,
+        "breakType": "River",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s4-212c8f80a0ef3ad8a72006033804f79a.svg",
+        "icon": "/packs/media/static/icons/icon-river-5090d49bdb7e9e82c9da2df347c4d4f8.svg",
+        "hidden": true
+    },
+    {
+        "name": "Pennan",
+        "surfForecastUrlString": "Pennan",
+        "latitude": 57.6907,
+        "longitude": -2.2631,
+        "breakType": "Reef",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s4-212c8f80a0ef3ad8a72006033804f79a.svg",
+        "icon": "/packs/media/static/icons/icon-reef-122e9100115d0bf9bfc0534e1ec4b6c1.svg",
+        "hidden": true
+    },
+    {
+        "name": "Wisemans",
+        "surfForecastUrlString": "Wisemans",
+        "latitude": 57.7086,
+        "longitude": -2.0652,
+        "breakType": "Reef/jetty",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s4-212c8f80a0ef3ad8a72006033804f79a.svg",
+        "icon": "/packs/media/static/icons/icon-reef-122e9100115d0bf9bfc0534e1ec4b6c1.svg",
+        "hidden": true
+    },
+    {
+        "name": "West Point",
+        "surfForecastUrlString": "West-Point",
+        "latitude": 57.6991,
+        "longitude": -2.0073,
+        "breakType": "Point",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s4-212c8f80a0ef3ad8a72006033804f79a.svg",
+        "icon": "/packs/media/static/icons/icon-point-e1a73fdf4f1e3f09d893a8dc8e5491cd.svg",
+        "hidden": false
+    },
+    {
+        "name": "The Harbour",
+        "surfForecastUrlString": "The-Harbour",
+        "latitude": 57.1439,
+        "longitude": -2.0553,
+        "breakType": "Beach/groyne",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s3-1fe2a002962d0ab4ccc72dfbe6359e4e.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    },
+    {
+        "name": "Inverbervie",
+        "surfForecastUrlString": "Inverbervie",
+        "latitude": 56.8433,
+        "longitude": -2.2641,
+        "breakType": "Point",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s4-212c8f80a0ef3ad8a72006033804f79a.svg",
+        "icon": "/packs/media/static/icons/icon-point-e1a73fdf4f1e3f09d893a8dc8e5491cd.svg",
+        "hidden": false
+    },
+    {
+        "name": "Johnshaven",
+        "surfForecastUrlString": "Johnshaven",
+        "latitude": 56.7835,
+        "longitude": -2.3295,
+        "breakType": "Reef",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s4-212c8f80a0ef3ad8a72006033804f79a.svg",
+        "icon": "/packs/media/static/icons/icon-reef-122e9100115d0bf9bfc0534e1ec4b6c1.svg",
+        "hidden": true
+    },
+    {
+        "name": "Arbroath",
+        "surfForecastUrlString": "Arbroath",
+        "latitude": 56.5506,
+        "longitude": -2.5846,
+        "breakType": "Beach and point",
+        "rating_icon": "/packs/media/components/breakheader/static/icon--s2-3055f66da0c53f2e0fb68196b648acca.svg",
+        "icon": "/packs/media/static/icons/icon-beach-6ae14c4ec8e42564694f215c133333b9.svg",
+        "hidden": false
+    }
+]

@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import puppeteer from 'puppeteer';
 import { createTRPCRouter, protectedProcedure } from '@/server/api/trpc';
-import { getSessionScreenshotUrls, handleError } from './utils/utils';
+import { createSurfSessionScreenshot, getSessionScreenshotUrls, handleError } from './utils/utils';
 
 export const surfSessionRouter = createTRPCRouter({
     surfSession: protectedProcedure.input(z.object({ id: z.string() })).query(async ({ input, ctx }) => {
@@ -97,50 +97,52 @@ export const surfSessionRouter = createTRPCRouter({
         const page = await browser.newPage();
 
         try {
-            await page.goto(
-                'https://www.surfline.com/surf-report/scarborough-north-bay/584204204e65fad6a7709088?view=table',
-                {
-                    waitUntil: 'domcontentloaded',
-                }
-            );
-            console.log('Page loaded.');
+            await createSurfSessionScreenshot({ page, spotName: input.spotName });
 
-            const divClass = 'TableDayContainer'; // Replace with your class name
+            // await page.goto(
+            //     'https://www.surfline.com/surf-report/scarborough-north-bay/584204204e65fad6a7709088?view=table',
+            //     {
+            //         waitUntil: 'domcontentloaded',
+            //     }
+            // );
+            // console.log('Page loaded.');
 
-            console.log(`Waiting for the first div with class "${divClass}"...`);
-            await page.waitForSelector(`div.${divClass}`);
-            console.log(`Div with class "${divClass}" found.`);
+            // const divClass = 'TableDayContainer'; // Replace with your class name
 
-            // Log the inner HTML of the div to confirm the structure
-            const divHtml = await page.evaluate((divClass) => {
-                const div = document.querySelector(`div.${divClass}`);
-                return div ? div.innerHTML : null;
-            }, divClass);
+            // console.log(`Waiting for the first div with class "${divClass}"...`);
+            // await page.waitForSelector(`div.${divClass}`);
+            // console.log(`Div with class "${divClass}" found.`);
 
-            if (!divHtml) {
-                console.error(`No div with class "${divClass}" found.`);
-            } else {
-                console.log(`Div inner HTML:\n${divHtml}`);
-            }
+            // // Log the inner HTML of the div to confirm the structure
+            // const divHtml = await page.evaluate((divClass) => {
+            //     const div = document.querySelector(`div.${divClass}`);
+            //     return div ? div.innerHTML : null;
+            // }, divClass);
 
-            // Try clicking the button within the div
-            const buttonClicked = await page.evaluate((divClass) => {
-                const div = document.querySelector(`div.${divClass}`);
-                if (div) {
-                    const button = div.querySelector('button'); // Adjust the selector if needed
-                    if (button) {
-                        button.click();
-                        return true;
-                    }
-                }
-                return false;
-            }, divClass);
+            // if (!divHtml) {
+            //     console.error(`No div with class "${divClass}" found.`);
+            // } else {
+            //     console.log(`Div inner HTML:\n${divHtml}`);
+            // }
 
-            if (buttonClicked) {
-                console.log('Button clicked successfully.');
-            } else {
-                console.error('No button found inside the div or the button was not clickable.');
-            }
+            // // Try clicking the button within the div
+            // const buttonClicked = await page.evaluate((divClass) => {
+            //     const div = document.querySelector(`div.${divClass}`);
+            //     if (div) {
+            //         const button = div.querySelector('button'); // Adjust the selector if needed
+            //         if (button) {
+            //             button.click();
+            //             return true;
+            //         }
+            //     }
+            //     return false;
+            // }, divClass);
+
+            // if (buttonClicked) {
+            //     console.log('Button clicked successfully.');
+            // } else {
+            //     console.error('No button found inside the div or the button was not clickable.');
+            // }
         } catch (error) {
             handleError({ error });
         } finally {
