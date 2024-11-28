@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const funnelDisplay = Funnel_Display({
     subsets: ['latin'],
     variable: '--font-funnelDisplay',
-    fallback: ['sans', 'sans-serif'],
+    fallback: ['sans-serif'],
 });
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

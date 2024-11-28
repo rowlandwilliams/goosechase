@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
-import { Button } from '../../ui/button';
+import { Button } from '../../ui/something';
 import { api } from '@/trpc/react';
 
 export const AddNewSessionButton = () => {

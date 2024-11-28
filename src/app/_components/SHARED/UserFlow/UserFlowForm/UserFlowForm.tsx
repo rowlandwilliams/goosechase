@@ -1,7 +1,7 @@
 'use client';
 
 import { LoadingSpinner } from '@/app/_components/SHARED/LoadingSpinner/LoadingSpinner';
-import { Button } from '@/app/_components/ui/button';
+import { Button } from '@/app/_components/ui/something';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { type ReactNode, type FormEvent } from 'react';

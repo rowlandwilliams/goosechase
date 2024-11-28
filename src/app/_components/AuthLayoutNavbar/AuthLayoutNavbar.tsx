@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { BrainwaveIcon } from '@/app/_components/SHARED/Icons/BrainwaveIcon/BrainwaveIcon';
-import { Button } from '@/app/_components/ui/button';
+import { Button } from '@/app/_components/ui/something';
 import { Separator } from '@/app/_components/ui/separator';
 import { AddNewSessionButton } from '@/app/_components/SHARED/AddNewSessionButton/AddNewSessionButton';
 import { LogoutButton } from '@/app/_components/LogoutButton/LogoutButton';

@@ -12,7 +12,7 @@ import {
     SidebarMenuItem,
     SidebarRail,
 } from '../ui/sidebar';
-import { Button } from '../ui/button';
+import { Button } from '../ui/something';
 
 // This is sample data.
 const data = {
