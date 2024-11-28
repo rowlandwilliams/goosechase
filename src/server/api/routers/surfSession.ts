@@ -9,10 +9,6 @@ export const surfSessionRouter = createTRPCRouter({
 
         const session = await ctx.db.surfSession.findUnique({ where: { id, createdById: ctx.session.user.id } });
 
-        if (!session) {
-            throw new Error('Session not found or does not belong to the user');
-        }
-
         return session;
     }),
 
@@ -164,6 +160,7 @@ export const surfSessionRouter = createTRPCRouter({
         const surfSessions = await ctx.db.surfSession.findMany({
             where: { createdById: ctx.session.user.id },
             orderBy: { createdAt: 'desc' },
+            include: { location: true },
         });
 
         return surfSessions;

@@ -17,7 +17,7 @@ export const NewSession = () => {
     const router = useRouter();
     const locationsQuery = api.location.locations.useQuery();
     const [location, setLocation] = useState<string | null>(null);
-    const locationId = locationsQuery.data?.find((surfSpot) => surfSpot.surfForecastUrlString === location)?.id;
+    const locationId = locationsQuery.data?.find((surfSpot) => surfSpot.surfForecastUrlString === location)?.id ?? null;
 
     const surfSessionQuery = api.surfSession.surfSession.useQuery({ id: sessionId ?? '' }, { enabled: !!sessionId });
     const updateSessionMutation = api.surfSession.updateSurfSession.useMutation({
