@@ -35,9 +35,16 @@ export const surfSessionRouter = createTRPCRouter({
         }),
 
     updateSurfSession: protectedProcedure
-        .input(z.object({ id: z.string(), name: z.string().nullable(), comments: z.string().nullable() }))
+        .input(
+            z.object({
+                id: z.string(),
+                name: z.string().nullable(),
+                comments: z.string().nullable(),
+                locationId: z.string().nullable(),
+            })
+        )
         .mutation(async ({ input, ctx }) => {
-            const { id, name, comments } = input;
+            const { id, name, comments, locationId } = input;
 
             try {
                 // Update the surf session in the database
@@ -46,6 +53,7 @@ export const surfSessionRouter = createTRPCRouter({
                     data: {
                         name: name ?? `Untitled - ${new Date().toDateString()}`,
                         comments,
+                        ...(locationId && { locationId }),
                     },
                 });
 

@@ -2,7 +2,7 @@
 
 import { FormFieldWithHeader } from '../../Forms/FormFieldWithHeader/FormFieldWithHeader';
 import { Input } from '../../ui/input';
-import { type FormEvent, useState } from 'react';
+import { type Dispatch, type FormEvent, type SetStateAction } from 'react';
 import { Combobox } from '@/app/_components/ui/combobox';
 import { Button } from '@/app/_components/ui/something';
 import { Camera } from 'lucide-react';
@@ -14,23 +14,26 @@ import { Rating } from '@/app/_components/ui/rating';
 interface Props {
     sessionName: string;
     handleSessionNameChange: ({ newName }: { newName: string }) => void;
+    location: string | null;
+    setLocation: Dispatch<SetStateAction<string | null>>;
 }
 
-export const NewSessionForm = ({ sessionName, handleSessionNameChange }: Props) => {
+export const NewSessionForm = ({ sessionName, handleSessionNameChange, location, setLocation }: Props) => {
     const locationsQuery = api.location.locations.useQuery();
-    const [location, setLocation] = useState('');
     const { comments, setComments } = useNewSurfSessionStore();
 
     const handleSelect = (value: string) => setLocation(value);
 
-    const locationSet = location.length > 0;
+    const locationSet = !!location;
 
     const createScreenshotMutation = api.surfSession.createScreenshot.useMutation();
 
     const handleCreateScreenshot = (e: FormEvent) => {
         e.preventDefault();
 
-        createScreenshotMutation.mutate({ spotName: location });
+        if (location) {
+            createScreenshotMutation.mutate({ spotName: location });
+        }
     };
 
     return (
@@ -55,7 +58,7 @@ export const NewSessionForm = ({ sessionName, handleSessionNameChange }: Props) 
                         noResultsMessage="No locations found"
                         searchPlaceholder="Search locations"
                         selectOptionString="Select Location"
-                        value={location}
+                        value={location ?? ''}
                         handleSelect={handleSelect}
                     />
                     {locationSet && (

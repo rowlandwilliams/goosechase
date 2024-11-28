@@ -6,7 +6,7 @@ import { Separator } from '../ui/separator';
 import { Button } from '../ui/something';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { api } from '@/trpc/react';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useNewSurfSessionStore } from '@/store/newSurfSession';
 import { DraftTag } from '@/app/_components/SHARED/DraftTag/DraftTag';
 
@@ -15,6 +15,9 @@ export const NewSession = () => {
     const sessionId = searchParams.get('id');
     const { sessionName, setSessionName, comments, setComments } = useNewSurfSessionStore();
     const router = useRouter();
+    const locationsQuery = api.location.locations.useQuery();
+    const [location, setLocation] = useState<string | null>(null);
+    const locationId = locationsQuery.data?.find((surfSpot) => surfSpot.surfForecastUrlString === location)?.id;
 
     const surfSessionQuery = api.surfSession.surfSession.useQuery({ id: sessionId ?? '' }, { enabled: !!sessionId });
     const updateSessionMutation = api.surfSession.updateSurfSession.useMutation({
@@ -26,11 +29,19 @@ export const NewSession = () => {
 
     const handlePublish = useCallback(() => {
         if (sessionId) {
-            updateSessionMutation.mutate({ id: sessionId, name: sessionName, comments });
+            updateSessionMutation.mutate({
+                id: sessionId,
+                name: sessionName,
+                comments,
+                locationId: locationId ?? null,
+            });
         }
-    }, [sessionId, sessionName, updateSessionMutation, comments]);
+    }, [sessionId, sessionName, updateSessionMutation, comments, locationId]);
 
-    const changesMade = sessionName !== surfSessionQuery.data?.name || comments !== surfSessionQuery.data.comments;
+    const changesMade =
+        sessionName !== surfSessionQuery.data?.name ||
+        comments !== surfSessionQuery.data.comments ||
+        locationId !== surfSessionQuery.data.locationId;
 
     const handleDelete = () => {
         if (sessionId) {
@@ -103,7 +114,12 @@ export const NewSession = () => {
                 </section>
             </header>
             <div className="flex gap-12 py-8 px-2">
-                <NewSessionForm sessionName={sessionName} handleSessionNameChange={handleSessionNameChange} />
+                <NewSessionForm
+                    location={location}
+                    setLocation={setLocation}
+                    sessionName={sessionName}
+                    handleSessionNameChange={handleSessionNameChange}
+                />
             </div>
         </section>
     );
