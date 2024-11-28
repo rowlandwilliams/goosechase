@@ -10,7 +10,6 @@ import { UserFlowForm } from '@/app/_components/SHARED/UserFlow/UserFlowForm/Use
 export const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
 
     const [loading, setLoading] = useState(false); // Loading state
 
@@ -28,7 +27,6 @@ export const LoginForm = () => {
         setLoading(false); // End loading
 
         if (res?.error) {
-            setError(res.error);
         } else {
             redirect('/');
         }

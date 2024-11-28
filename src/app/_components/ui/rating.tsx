@@ -45,24 +45,21 @@ export const Rating = ({
 }: RatingProps) => {
     const [hoverRating, setHoverRating] = useState<number | null>(null);
     const [currentRating, setCurrentRating] = useState(initialRating);
-    const [isHovering, setIsHovering] = useState(false);
 
     const handleMouseEnter = (event: React.MouseEvent<HTMLDivElement>) => {
         if (!disabled) {
-            setIsHovering(true);
-            const starIndex = parseInt((event.currentTarget as HTMLDivElement).dataset.starIndex || '0');
+            const starIndex = parseInt((event.currentTarget as HTMLDivElement).dataset.starIndex ?? '0');
             setHoverRating(starIndex);
         }
     };
 
     const handleMouseLeave = () => {
-        setIsHovering(false);
         setHoverRating(null);
     };
 
     const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
         if (!disabled) {
-            const starIndex = parseInt((event.currentTarget as HTMLDivElement).dataset.starIndex || '0');
+            const starIndex = parseInt((event.currentTarget as HTMLDivElement).dataset.starIndex ?? '0');
             setCurrentRating(starIndex);
             setHoverRating(null);
             if (onRatingChange) {
