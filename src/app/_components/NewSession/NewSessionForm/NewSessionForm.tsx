@@ -2,7 +2,7 @@
 
 import { FormFieldWithHeader } from '../../Forms/FormFieldWithHeader/FormFieldWithHeader';
 import { Input } from '../../ui/input';
-import { type Dispatch, type FormEvent, type SetStateAction } from 'react';
+import { useState, type Dispatch, type FormEvent, type SetStateAction } from 'react';
 import { Combobox } from '@/app/_components/ui/combobox';
 import { Button } from '@/app/_components/ui/something';
 import { Camera } from 'lucide-react';
@@ -10,17 +10,29 @@ import { api } from '@/trpc/react';
 import { Textarea } from '@/app/_components/ui/textarea';
 import { useNewSurfSessionStore } from '@/store/newSurfSession';
 import { Rating } from '@/app/_components/ui/rating';
+import { Dialog, DialogContent, DialogHeader } from '@/app/_components/ui/dialog';
+import { DialogTitle } from '@radix-ui/react-dialog';
+import { LoadingSpinner } from '@/app/_components/SHARED/LoadingSpinner/LoadingSpinner';
 
 interface Props {
     sessionName: string;
     handleSessionNameChange: ({ newName }: { newName: string }) => void;
     location: string | null;
     setLocation: Dispatch<SetStateAction<string | null>>;
+    surfSessionId: string;
 }
 
-export const NewSessionForm = ({ sessionName, handleSessionNameChange, location, setLocation }: Props) => {
+export const NewSessionForm = ({
+    sessionName,
+    handleSessionNameChange,
+    location,
+    setLocation,
+    surfSessionId,
+}: Props) => {
     const locationsQuery = api.location.locations.useQuery();
+    const surfSessionScreenshotsQuery = api.surfSession.allScreenshots.useQuery({ surfSessionId });
     const { comments, setComments } = useNewSurfSessionStore();
+    const [success, setSuccess] = useState(false);
 
     const handleSelect = (value: string) => setLocation(value);
 
@@ -31,9 +43,20 @@ export const NewSessionForm = ({ sessionName, handleSessionNameChange, location,
     const handleCreateScreenshot = (e: FormEvent) => {
         e.preventDefault();
 
-        if (location) {
-            createScreenshotMutation.mutate({ spotName: location });
-        }
+        if (!location) return;
+
+        createScreenshotMutation.mutate(
+            { spotName: location, surfSessionId },
+            {
+                onSuccess: (data) => {
+                    console.log('Screenshot created successfully:', data);
+                    setSuccess(true);
+                },
+                onError: (error) => {
+                    console.error('Error creating screenshot:', error);
+                },
+            }
+        );
     };
 
     return (
@@ -61,11 +84,6 @@ export const NewSessionForm = ({ sessionName, handleSessionNameChange, location,
                         value={location ?? ''}
                         handleSelect={handleSelect}
                     />
-                    {locationSet && (
-                        <Button onClick={handleCreateScreenshot}>
-                            <Camera /> Create Screenshot
-                        </Button>
-                    )}
                 </div>
             </FormFieldWithHeader>
             <FormFieldWithHeader title="Comments">
@@ -78,6 +96,24 @@ export const NewSessionForm = ({ sessionName, handleSessionNameChange, location,
             <FormFieldWithHeader title="Rating">
                 <Rating rating={5} variant="indigo" showText={false} />
             </FormFieldWithHeader>
+            {locationSet && (
+                <Button onClick={handleCreateScreenshot}>
+                    {createScreenshotMutation.isPending ? (
+                        <LoadingSpinner inline /> // Display spinner when loading
+                    ) : (
+                        <Camera /> // Display Camera icon when not loading
+                    )}{' '}
+                    Create Screenshot
+                </Button>
+            )}
+            <Dialog open={success} onOpenChange={setSuccess}>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle>Screenshot Created!</DialogTitle>
+                    </DialogHeader>
+                    <p>Your surf session screenshot was successfully created.</p>
+                </DialogContent>
+            </Dialog>
         </form>
     );
 };

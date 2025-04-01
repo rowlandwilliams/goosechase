@@ -1,29 +1,21 @@
-# Create T3 App
+# Goosechase
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+An app to help you when goosechasin' around the east coast of the United Kingdom, renowned for it's quality but cold and inconsistent surf. 
 
-## What's next? How do I make an app with this?
+This is the start of a project to help me log my surf sessions by recording the forecast conditions from surf-forecast.com as a screenshot that I can refer back to at a later date.
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+Tech Used
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+- T3 app
+- AWS S3 (for screenshot storage)
+- shadcn ui (well-designed, reusable components)
+- Puppeteer (for web scraping / screenshot capture)
+- Zustand (for simple and lightweight state management)
 
-## Learn More
+It's still a work in progress, heres what I have added so far:
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
-
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
-
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
-
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+- Simple Login using next-auth (credentials provider)
+- Basic sign up
+- Ability to create a new session (with a nice autosave feature)
+- Backend logic to take a screenshot of a given spot and save it to an S3 bucket (this isn't connected to any UI yet for viewing screenshots etc)
