@@ -83,9 +83,9 @@ export const surfSessionRouter = createTRPCRouter({
         }
     }),
 
-    allScreenshots: protectedProcedure.query(async () => {
+    allScreenshots: protectedProcedure.input(z.object({ surfSessionId: z.string() })).query(async ({ input }) => {
         try {
-            const { urls } = await getSessionScreenshotUrls();
+            const { urls } = await getSessionScreenshotUrls({ surfSessionId: input.surfSessionId });
 
             return urls;
         } catch (error) {
@@ -93,68 +93,30 @@ export const surfSessionRouter = createTRPCRouter({
         }
     }),
 
-    createScreenshot: protectedProcedure.input(z.object({ spotName: z.string() })).mutation(async ({ input }) => {
-        const browser = await puppeteer.launch({
-            headless: false,
-            defaultViewport: { width: 1280, height: 720 }, // Example size
-        });
-        const page = await browser.newPage();
+    createScreenshot: protectedProcedure
+        .input(z.object({ spotName: z.string(), surfSessionId: z.string() }))
+        .mutation(async ({ input }) => {
+            const browser = await puppeteer.launch({
+                headless: true,
+                defaultViewport: { width: 1280, height: 720 }, // Example size
+            });
+            const page = await browser.newPage();
 
-        try {
-            await createSurfSessionScreenshot({ page, spotName: input.spotName });
+            console.log('SURF SESSION ID', input.surfSessionId);
+            try {
+                await createSurfSessionScreenshot({
+                    page,
+                    spotName: input.spotName,
+                    surfSessionId: input.surfSessionId,
+                });
+            } catch (error) {
+                handleError({ error });
+            } finally {
+                await browser.close();
+            }
 
-            // await page.goto(
-            //     'https://www.surfline.com/surf-report/scarborough-north-bay/584204204e65fad6a7709088?view=table',
-            //     {
-            //         waitUntil: 'domcontentloaded',
-            //     }
-            // );
-            // console.log('Page loaded.');
-
-            // const divClass = 'TableDayContainer'; // Replace with your class name
-
-            // console.log(`Waiting for the first div with class "${divClass}"...`);
-            // await page.waitForSelector(`div.${divClass}`);
-            // console.log(`Div with class "${divClass}" found.`);
-
-            // // Log the inner HTML of the div to confirm the structure
-            // const divHtml = await page.evaluate((divClass) => {
-            //     const div = document.querySelector(`div.${divClass}`);
-            //     return div ? div.innerHTML : null;
-            // }, divClass);
-
-            // if (!divHtml) {
-            //     console.error(`No div with class "${divClass}" found.`);
-            // } else {
-            //     console.log(`Div inner HTML:\n${divHtml}`);
-            // }
-
-            // // Try clicking the button within the div
-            // const buttonClicked = await page.evaluate((divClass) => {
-            //     const div = document.querySelector(`div.${divClass}`);
-            //     if (div) {
-            //         const button = div.querySelector('button'); // Adjust the selector if needed
-            //         if (button) {
-            //             button.click();
-            //             return true;
-            //         }
-            //     }
-            //     return false;
-            // }, divClass);
-
-            // if (buttonClicked) {
-            //     console.log('Button clicked successfully.');
-            // } else {
-            //     console.error('No button found inside the div or the button was not clickable.');
-            // }
-        } catch (error) {
-            handleError({ error });
-        } finally {
-            await browser.close();
-        }
-
-        return { success: true };
-    }),
+            return { success: true };
+        }),
 
     getSurfSessions: protectedProcedure.query(async ({ ctx }) => {
         const surfSessions = await ctx.db.surfSession.findMany({

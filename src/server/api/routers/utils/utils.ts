@@ -2,6 +2,7 @@ import AWS from 'aws-sdk';
 import { S3Client, GetObjectCommand, ListObjectsV2Command } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import { type Page } from 'puppeteer';
+import { db } from '@/server/db';
 
 export const s3Client = new S3Client({
     region: 'eu-west-2',
@@ -40,23 +41,28 @@ export const generateSignedUrl = async (
     }
 };
 
-export const getSessionScreenshotUrls = async () => {
-    const params = {
-        Bucket: bucketName ?? '',
-    };
+export const getSessionScreenshotUrls = async ({ surfSessionId }: { surfSessionId: string }) => {
+    const screenshotsBySurfSessionId = await db.surfSessionScreenshot.findMany({
+        where: { surfSessionId },
+        select: { id: true }, // We only need the ID (used in filename)
+    });
 
+    if (!screenshotsBySurfSessionId.length) return { urls: [] };
+
+    const params = { Bucket: bucketName };
     const command = new ListObjectsV2Command(params);
     const data = await s3Client.send(command);
 
-    if (!data.Contents) {
-        return { urls: [] };
-    }
+    if (!data.Contents) return { urls: [] };
 
-    // Extract file keys (paths) of the objects in the specified folder
-    const urlsPromises = data.Contents?.map(async (item) => {
-        const url = item.Key ? await generateSignedUrl(bucketName ?? '', item.Key) : '';
+    const screenshotIds = new Set(screenshotsBySurfSessionId.map((s) => s.id));
 
-        return url;
+    const matchingObjects = data.Contents.filter((item) => {
+        return item.Key && screenshotIds.has(item.Key.replace('screenshot-', '').replace('.png', ''));
+    });
+
+    const urlsPromises = matchingObjects.map(async (item) => {
+        return item.Key ? await generateSignedUrl(bucketName, item.Key) : '';
     });
 
     const urls = (await Promise.all(urlsPromises)).filter((url) => url);
@@ -64,7 +70,15 @@ export const getSessionScreenshotUrls = async () => {
     return { urls };
 };
 
-export const createSurfSessionScreenshot = async ({ page, spotName }: { page: Page; spotName: string }) => {
+export const createSurfSessionScreenshot = async ({
+    page,
+    spotName,
+    surfSessionId,
+}: {
+    page: Page;
+    spotName: string;
+    surfSessionId: string;
+}) => {
     await page.goto(`https://www.surf-forecast.com/breaks/${spotName}/forecasts/latest/six_day`, {
         waitUntil: 'domcontentloaded',
     });
@@ -88,6 +102,10 @@ export const createSurfSessionScreenshot = async ({ page, spotName }: { page: Pa
         console.log('Column expanded.');
     }
 
+    const screenshot = await db.surfSessionScreenshot.create({
+        data: { surfSessionId },
+    });
+
     // Capture screenshot of the expanded first column
     const tableElement = await page.$('.forecast-table__table');
     if (tableElement) {
@@ -104,7 +122,7 @@ export const createSurfSessionScreenshot = async ({ page, spotName }: { page: Pa
             });
 
             // Upload to S3
-            const fileName = `first-column-screenshot-${Date.now()}.png`; // Dynamically generate file name
+            const fileName = `${screenshot.id}.png`; // Dynamically generate file name
             const params = {
                 Bucket: bucketName,
                 Key: fileName, // The name of the file to be saved in the S3 bucket

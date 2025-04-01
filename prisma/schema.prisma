@@ -43,7 +43,21 @@ model SurfSession {
     locationId  String?
     location    Location? @relation(fields: [locationId], references: [id])
 
+    // One-to-many relation with SurfSessionScreenshot
+    screenshots SurfSessionScreenshot[]
+
     @@index([createdById]) // Optional index for querying by user
+}
+
+
+model SurfSessionScreenshot {
+    id            String   @id @default(uuid()) 
+
+    // Foreign key to SurfSession model
+    surfSessionId String
+    surfSession   SurfSession @relation(fields: [surfSessionId], references: [id]) 
+
+    @@index([surfSessionId]) // Index for efficient querying by surf session
 }
 
 

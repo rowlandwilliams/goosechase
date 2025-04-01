@@ -38,10 +38,9 @@ export const NewSession = () => {
         }
     }, [sessionId, sessionName, updateSessionMutation, comments, locationId]);
 
-    const changesMade =
-        sessionName !== surfSessionQuery.data?.name ||
-        comments !== surfSessionQuery.data.comments ||
-        locationId !== surfSessionQuery.data.locationId;
+    const changesMade = sessionName !== surfSessionQuery.data?.name || comments !== surfSessionQuery.data.comments;
+
+    console.log(locationId, surfSessionQuery?.data?.locationId);
 
     const handleDelete = () => {
         if (sessionId) {
@@ -58,6 +57,7 @@ export const NewSession = () => {
         }
     };
 
+    console.log(surfSessionQuery.data, location);
     // Update the sessionName state when the query loads the session data
     useEffect(() => {
         if (surfSessionQuery.data?.name) {
@@ -113,14 +113,17 @@ export const NewSession = () => {
                     </Button>
                 </section>
             </header>
-            <div className="flex gap-12 py-8 px-2">
-                <NewSessionForm
-                    location={location}
-                    setLocation={setLocation}
-                    sessionName={sessionName}
-                    handleSessionNameChange={handleSessionNameChange}
-                />
-            </div>
+            {sessionId && (
+                <div className="flex gap-12 py-8 px-2">
+                    <NewSessionForm
+                        location={location}
+                        setLocation={setLocation}
+                        sessionName={sessionName}
+                        handleSessionNameChange={handleSessionNameChange}
+                        surfSessionId={sessionId}
+                    />
+                </div>
+            )}
         </section>
     );
 };
